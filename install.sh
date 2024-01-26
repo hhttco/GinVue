@@ -13,8 +13,12 @@ main() {
 	cd /var/www && git clone https://github.com/hhttco/GinVue.git && cd GinVue
 	chown -R www-data:www-data /var/www/GinVue
     chmod -R 755 /var/www/GinVue
+    rm gin-demo
+    wget -O gin-demo https://github.com/hhttco/GinVue/raw/main/gin-demo
 	chmod +x gin-demo
 	nohup ./gin-demo >nohup.out 2>&1 &
+
+	rm -rf /etc/nginx/conf.d/dist.conf
 
 	echo "server {
     listen       8080;
